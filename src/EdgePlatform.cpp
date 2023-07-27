@@ -74,6 +74,9 @@ void EdgePlatform::init()
     EdgePlatformLogger.info("BYTE 3: 0x%lx", info.features >> 8);
     EdgePlatformLogger.info("BYTE 2: 0x%lx", info.features & 0xFF);
 
+
+    EdgePlatformLogger.info("Mode =! 0x%lx", info.model);
+
     uint8_t byte2 = info.features & 0xFF;
     uint8_t byte3 = info.features >> 8;
 
@@ -94,7 +97,7 @@ void EdgePlatform::init()
         break;
     case TRACKER_MODEL_BARE_SOM_DEFAULT:
     default:
-        model_ = TrackerModel::eBARE_SOM_DEFAULT;
+        model_ = TrackerModel::eEVAL;
     }
 
     // Parse out info.features:BYTE2 for GNSS, IMU and GPIO Expander

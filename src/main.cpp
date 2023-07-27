@@ -30,15 +30,18 @@ STARTUP(
     Tracker::startup();
 );
 
-SerialLogHandler logHandler(115200, LOG_LEVEL_TRACE, {
+SerialLogHandler logHandler(115200, LOG_LEVEL_INFO, {
     { "app.gps.nmea", LOG_LEVEL_INFO },
     { "app.gps.ubx",  LOG_LEVEL_INFO },
+    // Added by Nate
     { "ncp.at", LOG_LEVEL_INFO },
     { "net.ppp.client", LOG_LEVEL_INFO },
+    { "otp", LOG_LEVEL_INFO },
 });
 
 void setup()
 {
+    waitFor(Serial.isConnected, 15000);
     Tracker::instance().init();
 }
 
