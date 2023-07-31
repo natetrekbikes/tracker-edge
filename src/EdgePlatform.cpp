@@ -97,7 +97,7 @@ void EdgePlatform::init()
         break;
     case TRACKER_MODEL_BARE_SOM_DEFAULT:
     default:
-        model_ = TrackerModel::eEVAL;
+        model_ = TrackerModel::eBARE_SOM_DEFAULT;
     }
 
     // Parse out info.features:BYTE2 for GNSS, IMU and GPIO Expander

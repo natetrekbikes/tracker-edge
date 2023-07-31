@@ -48,7 +48,7 @@
 #endif
 
 #ifndef TRACKER_PRODUCT_VERSION
-#define TRACKER_PRODUCT_VERSION               (120)
+#define TRACKER_PRODUCT_VERSION               (121)
 #endif
 
 #if ( (SYSTEM_VERSION < SYSTEM_VERSION_ALPHA(5, 0, 0, 1)) && (PLATFORM_ID == PLATFORM_TRACKER) )

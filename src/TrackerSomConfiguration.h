@@ -21,14 +21,14 @@
 #include "IoGnssLed.h"
 
 
-class TrackerEvalConfiguration: public IEdgePlatformConfiguration
+class TrackerSomConfiguration: public IEdgePlatformConfiguration
 {
 public:
-    TrackerEvalConfiguration()
+    TrackerSomConfiguration()
     {
         commonCfg.chargeCurrentHigh = 1024; // milliamps
         commonCfg.inputCurrent = 1500; // milliamps
-        commonCfg.pGnssLed = nullptr;
+        commonCfg.pGnssLed = new IoGnssLed(TRACKER_GNSS_LOCK_LED);;
     }
 
     void load_specific_platform_config()

@@ -25,6 +25,7 @@
 #include "TrackerOneConfiguration.h"
 #include "TrackerMConfiguration.h"
 #include "TrackerEvalConfiguration.h"
+#include "TrackerSomConfiguration.h"
 
 void ctrl_request_custom_handler(ctrl_request* req)
 {
@@ -592,6 +593,10 @@ int Tracker::init()
             break;
         case EdgePlatform::TrackerModel::eEVAL:
             _platformConfig = new TrackerEvalConfiguration();
+            _commonCfgData = _platformConfig->get_common_config_data();
+            break;
+        case EdgePlatform::TrackerModel::eBARE_SOM_DEFAULT:
+            _platformConfig = new TrackerSomConfiguration();
             _commonCfgData = _platformConfig->get_common_config_data();
             break;
     }
