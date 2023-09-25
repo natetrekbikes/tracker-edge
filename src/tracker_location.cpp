@@ -883,15 +883,30 @@ void TrackerLocation::buildPublish(LocationPoint& cur_loc, bool error) {
         uint8_t max {};
         float mean {};
         unsigned int i {};
+        unsigned int zero_counts {};
+        unsigned int count_that_are_not_zero {};
+
         for (; i < cur_loc.satsInView; i++) {
             auto value = cur_loc.sats_in_view_desc[i].snr;
-            mean += (float)value;
-            min = std::min<uint8_t>(min, value);
-            max = std::max<uint8_t>(max, value);
+
+            if(0 != value)
+            {
+                mean += (float)value;
+                min = std::min<uint8_t>(min, value);
+                max = std::max<uint8_t>(max, value);
+            }
+
+            else
+            {
+                zero_counts += 1;
+            }
         }
+
+        count_that_are_not_zero = i - zero_counts;
         // Don't divide by zero
-        if (i) {
-            mean /= i;
+
+        if (count_that_are_not_zero) {
+            mean /= count_that_are_not_zero;
             round(mean);
         }
 
