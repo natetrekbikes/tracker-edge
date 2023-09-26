@@ -161,6 +161,8 @@ class TrackerLocation
         void unlock() {mutex.unlock();}
 
         inline bool getMinPublish() { return _config_state.min_publish; }
+        inline bool getMinInterval() { return _config_state.interval_min_seconds; }
+        inline bool getMaxInterval() { return _config_state.interval_max_seconds; }
 
         int addWap(WiFiAccessPoint* wap);
 

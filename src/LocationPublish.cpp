@@ -26,8 +26,8 @@ const char STORE_QUEUE_FILE_PATH[] = "/usr/store_queue";
 
 uint8_t store_msg_buffer[particle::protocol::MAX_EVENT_DATA_LENGTH + 1] = {0};
 
-void locationGenerationCallback(JSONWriter &writer,
-    LocationPoint &point, const void *context);
+// void locationGenerationCallback(JSONWriter &writer,
+//     LocationPoint &point, const void *context);
 
 void LocationPublish::init() {
     static ConfigObject store_forward("store", {
@@ -45,7 +45,7 @@ void LocationPublish::init() {
         start();
     }
 
-    Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
+    // Tracker::instance().location.regLocGenCallback(locationGenerationCallback);
 }
 
 void LocationPublish::start() {
@@ -120,7 +120,7 @@ int LocationPublish::disk_queue_cb(CloudServiceStatus status,
     return 0;
 }
 
-void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const void *context)
-{
-    LocationPublish::instance().regLocPubCallback();
-}
+// void locationGenerationCallback(JSONWriter &writer, LocationPoint &point, const void *context)
+// {
+//     LocationPublish::instance().regLocPubCallback();
+// }
